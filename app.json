@@ -1,0 +1,43 @@
+{
+  "name": "My BOT'S",
+  "description": "A telegram bots!",
+  "logo": "https://telegra.ph/file/5474e57ebcbfc6042c7b5.jpg",
+    "keywords": [
+    "telegram",
+    "Bot",
+    "akinator"
+  ],
+  "repository": "https://github.com/h0-qp/bots",
+  "website": "https://github.com/h0-qp/",
+  "success_url": "https://t.me/SOURCE_FRANK",
+  "env": {
+    "DOWNLOAD_TOKEN": {
+      "description": "download token bot",
+      "value": "",
+      "required": true
+    },
+    "REMINI_TOKEN": {
+      "description": "remini token bot",
+      "value": "",
+      "required": true
+    },
+    "LETTERBOXD_TOKEN": {
+      "description": "letterboxd token bot",
+      "value": "",
+      "required": true
+    },
+    "MOVIE_TOKEN": {
+      "description": "letterboxd token bot",
+      "value": "",
+      "required": true
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ]
+}
