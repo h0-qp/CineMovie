@@ -2,12 +2,3 @@ requests
 python-dotenv
 user-agent
 flask
-datetime
-wget
-youtube-search
-spotipy
-yt_dlp
-telebot
-pytelegrambotapi
-pillow
-redis
