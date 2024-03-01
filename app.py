@@ -140,4 +140,4 @@ def movie_detail(movie_id):
 #	return redirect(url_for('movie_detail', movie_id=movie_id))
 
 if __name__ == '__main__':
-    app.run(host="cine-movie-4199a9e8dad3.herokuapp.com")
+    app.run(debug=True)
