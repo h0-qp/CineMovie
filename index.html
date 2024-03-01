@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	
+	<!-- زر البحث في الاعلى...
+	<span class="site-overlay"></span>
+	<div class="search-box px-xl-5">
+		<div class="container-fluid search-container">
+			<form action="/search" class="search-form" method="post">
+				<label for="searchBoxInput" class="d-flex align-items-center h-100 w-100 m-0">
+					<button type="submit" class="px-3 ml-2 font-size-30">
+						<i class="icon-search">🔍</i>
+					</button>
+					<input type="text" name="query" required id="searchBoxInput" placeholder="ابحث هنا">
+				</label>
+			</form>
+		<div class="search-toggle"><i class="icon-arrow-left"></i></div>
+	</div>
+	-->
+   <div class="container">
+       <a href="{{ url_for('index') }}" class="logo">CINEMA WORLD</a>
+       <button id="menu-toggle" style="background-color: black;">☰</button>
+
+	    <!-- القائمة الجانبية -->
+	    <div id="side-menu">
+	       <ul>
+	       	<!--
+	       	
+	           <li>
+	           	<a class="no_click">أفلام</a>
+	           	<ul>
+	            		<li><a href="{{ url_for('index') }}">الاشهر</a></li>
+	           	</ul>
+	           </li>
+	      	-->
+	      	
+	           <li>
+	            	<a style="color: green;" href="https://t.me/cn_world">Follow us on Telegram.</a>
+	            </li>
+	        </ul>
+	    </div>
+        
+       <h1 id="CINEMOVIE">CineMovie Info</h1>
+       
+       <!-- السكشنات الجانببة-->
+		<div id="navbar">
+		    <a href="#" onclick="openSection('section1')">Mevies</a>
+		    <a href="#" onclick="openSection('section2')">Actors</a>
+		    <a href="#" onclick="openSection('section3')">Similar</a>
+		    <!-حتى اضيف اكثر -->
+		</div>
+		
+		<div id="section1" class="content-section">
+		    <!--  قسم الافلام -->
+		    <form action="/search" method="post" class="search-form">
+           	<input type="text" name="query" required placeholder="ابحث عن فيلم...">
+           	<button type="submit" class="search-icon">🔍</button>
+       	</form>
+       	
+		    {% if popular_movies %}
+	           <h2>Popular this Wike.</h2>
+	           <ul class="movie-list">
+	               {% for movie in popular_movies %}
+	                   <li>
+	                      <a href="{{ url_for('movie_detail', movie_id=movie.id) }}">
+	                      	<img src="{{ 'https://image.tmdb.org/t/p/original' ~ movie.poster_path }}" alt="{{ movie.title }}">
+	                      	<p style="color: black;">{{ movie.title }} - {{ movie.release_date }}</p>
+	                      </a>
+	                   </li>
+	               {% endfor %}
+	           </ul>
+	       {% endif %}
+	       
+	       {% if movies %}
+	           <h2>نتائج البحث عن {{query}}</h2>
+	           <ul class="movie-list">
+	               {% for movie in movies %}
+	                   <li>
+	                      <a href="{{ url_for('movie_detail', movie_id=movie.id) }}">
+	                      <img src="{{ 'https://image.tmdb.org/t/p/original' ~ movie.poster_path }}" alt="{{ movie.title }}">
+	                       <p style="color: black;">{{ movie.title }} - {{ movie.release_date }}</p>
+	                   </li>
+	               {% endfor %}
+	           </ul>
+	       {% endif %}
+	       
+		</div>
+		<!--</div>-->
+		
+		<div id="section2" class="content-section">
+		    <!-- محتوى القسم 2 -->
+		    <p style="font-size: 75px; color: black;">SOON !...</p>
+		</div>
+		
+		<div id="section3" class="content-section">
+		    <!-- محتوى القسم 3 -->
+		    <p style="font-size: 75px; color: black;">SOON !...</p>
+		</div>
+       
+       {% if movies %}
+           <h2>نتائج البحث عن {{query}}</h2>
+           <ul class="movie-list">
+               {% for movie in movies %}
+                   <li>
+                      <a href="{{ url_for('movie_detail', movie_id=movie.id) }}">
+                      <img src="{{ 'https://image.tmdb.org/t/p/original' ~ movie.poster_path }}" alt="{{ movie.title }}">
+                       <p style="color: black;">{{ movie.title }} - {{ movie.release_date }}</p>
+                   </li>
+               {% endfor %}
+           </ul>
+       {% endif %}
+       
+   </div>
+   <script>
+   	document.getElementById('menu-toggle').addEventListener('click', function () {
+    this.classList.toggle('active');
+});
+
+	function openSection(sectionId) {
+	    // إخفاء جميع أقسام المحتوى
+	    const contentSections = document.querySelectorAll('.content-section');
+	    contentSections.forEach(section => {
+	        section.style.display = 'none';
+	    });
+
+    // عرض القسم المحدد
+    const selectedSection = document.getElementById(sectionId);
+	    if (selectedSection) {
+	        selectedSection.style.display = 'block';
+	    }
+	};
+
+	document.addEventListener("DOMContentLoaded", function() {
+		openSection('section1'); // اول مايفتح على قائمة الافلام
+	});
+	
+   </script>
+</body>
+</html>

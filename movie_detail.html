@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }} Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container"> <!-- style="background-color: rgb(138, 124, 15); بني فاتح-->
+    	<a href="{{ url_for('index') }}" class="logo">CINEMA WORLD</a>
+        <h1 style="color: black;">"{{ movie.title }}" Details</h1>
+        <img src="{{ 'https://image.tmdb.org/t/p/original' ~ movie.poster_path }}" alt="{{ movie.title }}" style="width: 250px">
+        {% if trailer %}
+            <p><a href="{{ trailer }}" class="trailer-button">Trailer</a>
+            </p>
+        {% endif %}
+        
+        <p style="color: black;">Overview: {{ movie.overview }}</p>
+        <p style="color: black;">Genre: {{genres}}</p>
+        <p style="color: black;">Release Date: {{ movie.release_date }}</p>
+        <p style="color: black;">Runtime: {{ movie.runtime }} minutes</p>
+        <p style="color: black;">Rating: {{ movie.vote_average }}</p>
+        {% if trailertry %}
+	        <video width="370" height="190" controls>
+	        	<source src="{{ trailer }}" type="video/mp4">
+	        Your browser does not support the video tag.
+	        </video>
+	     {% endif %}
+        
+        <div id="like-dislike-container">
+	        <button id="like-button">Like</button>
+		        <span id="likes-count">{{ movie.likes }}</span>
+	        <button id="dislike-button">Dislike</button>
+	        	<span id="dislikes-count">{{ movie.dislikes }}</span>
+	    </div>
+        
+        <p><a href="{{ url_for('index') }}" style="color: black;">Back to Home</a></p>
+    </div>
+    
+    <!-- الصور-->
+    <h2 style="background-color: #8B4513; color: white;">BackGrounds - Images</h2>
+    <div id="images-movie">
+    	{% for image in movie.images.backdrops %}
+    		<li>
+    			<img src="{{ 'https://image.tmdb.org/t/p/original' ~ image.file_path }}" alt="{{ movie.title }}" >
+    		</li>
+    	{% endfor %}
+    </div>
+    			
+    
+    <!-- عرض الأفلام المشابهة -->
+    <h2 style="background-color: #8B4513; color: white;">Similar Movies</h2>
+    <div id="similar-movies-container" class="hidden">
+    	<!--
+    	 <ul class="similar-movie"> 
+    	-->
+    		{% for movie in similar %}
+	    		<li>
+	    			<a href="{{ url_for('movie_detail', movie_id=movie.id) }}">
+	    				<img src="{{ 'https://image.tmdb.org/t/p/original' ~ movie.poster_path }}" alt="{{ movie.title }}"  style="width: 100px;">
+	    			</a>
+	    			<a href="{{ url_for('movie_detail', movie_id=movie.id) }}">
+	    				<p style="color: grey;">{{ movie.title }}</p>
+	    			</a>
+	    		</li>
+    		{% endfor %}
+    		<!--</ul> -->
+	</div>
+
+    
+    <script>
+    	const likeButton = document.getElementById('like-button');
+		const dislikeButton = document.getElementById('dislike-button');
+		const likesCount = document.getElementById('likes-count');
+		const dislikesCount = document.getElementById('dislikes-count');
+
+		likeButton.addEventListener('click', () => {
+    // زيادة عدد اللايكات وتحديث العرض
+    		movie.likes += 1;
+    		likesCount.textContent = movie.likes;
+		});
+
+		dislikeButton.addEventListener('click', () => {
+    // زيادة عدد الدسلايكات وتحديث العرض
+  		  movie.dislikes += 1;
+		    dislikesCount.textContent = movie.dislikes;
+		});
+		
+		
+		document.addEventListener('DOMContentLoaded', () => {
+	    const similarMoviesContainer = document.getElementById('similar-movies-container');
+	    
+	});
+		
+    </script>
+    
+</body>
+</html>
