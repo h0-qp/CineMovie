@@ -140,4 +140,4 @@ def movie_detail(movie_id):
 #	return redirect(url_for('movie_detail', movie_id=movie_id))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080))
+    app.run(host='0.0.0.0', port=8080)
