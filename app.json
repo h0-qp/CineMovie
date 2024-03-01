@@ -1,37 +1,15 @@
 {
-  "name": "My BOT'S",
-  "description": "A telegram bots!",
-  "logo": "https://telegra.ph/file/5474e57ebcbfc6042c7b5.jpg",
+  "name": "CineMovie",
+  "description": "website about movies and tv!",
+  "logo": "https://telegra.ph/file/d2b379fb1b05cfdff2e60.jpg",
     "keywords": [
     "telegram",
-    "Bot",
-    "akinator"
+    "movie",
+    "tv"
   ],
-  "repository": "https://github.com/h0-qp/bots",
+  "repository": "https://github.com/h0-qp/CineMovie",
   "website": "https://github.com/h0-qp/",
-  "success_url": "https://t.me/SOURCE_FRANK",
-  "env": {
-    "DOWNLOAD_TOKEN": {
-      "description": "download token bot",
-      "value": "",
-      "required": true
-    },
-    "REMINI_TOKEN": {
-      "description": "remini token bot",
-      "value": "",
-      "required": true
-    },
-    "LETTERBOXD_TOKEN": {
-      "description": "letterboxd token bot",
-      "value": "",
-      "required": true
-    },
-    "MOVIE_TOKEN": {
-      "description": "letterboxd token bot",
-      "value": "",
-      "required": true
-    }
-  },
+  "success_url": "https://t.me/cn_world",
   "addons": [
     {
       "plan": "heroku-postgresql",
