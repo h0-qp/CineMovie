@@ -4,7 +4,7 @@ import requests,os,json
 #from flask_sqlalchemy import SQLAlchemy
 #from sqlalchemy.orm import Mapped, mapped_column
 
-app = Flask(__name__, template_folder=os.path.dirname(__file__))
+app = Flask(__name__)
 
 try:
 	open("file.json", "r").read()
@@ -140,4 +140,4 @@ def movie_detail(movie_id):
 #	return redirect(url_for('movie_detail', movie_id=movie_id))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run()
