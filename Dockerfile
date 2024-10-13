@@ -1,8 +1,12 @@
-FROM python:latest
+FROM python:3.9
 
+WORKDIR /app
 
-RUN git clone https://github.com/h0-qp/CineMovie.git /CineMovie
-WORKDIR /CineMovie
-RUN python -m pip install --upgrade pip
-RUN python -m pip install --no-cache-dir -r CineMovie/requirements.txt
-CMD python3 app.py
+COPY requirements.txt .
+
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
