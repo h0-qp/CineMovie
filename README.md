@@ -1,1 +1,3 @@
-**A Simple Website For searching for and movie, of cinema**
+**A Simple Website For Searching for and Movie, of Cinema Using MDb**
+
+
