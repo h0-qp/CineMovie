@@ -1,5 +1,12 @@
-**A Simple Website For Searching for and Movie, of Cinema Using MDb**
+**A Simple Website For Searching for and Movie, of Cinema Using MoviesDB**
 
-<p align="center"> 
-<img src="https://freeimage.host/i/2BfPDP4"></img>
-</p>
+
+Little More:
+```
+• Flask (Python)
+• HTML
+• CSS
+• JavaScript
+```
+
+| [Hussein Rashid](https://t.me/jj8jjj8) |
